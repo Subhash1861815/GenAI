@@ -8,7 +8,7 @@ from PIL import Image
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def get_gemini_response(input_prompt,image):
-    model=genai.GenerativeModel('gemini-1.5-flash')
+    model = genai.GenerativeModel("gemini-flash-latest")
     response=model.generate_content([input_prompt,image[0]])
     return response.text
 
@@ -33,7 +33,7 @@ uploaded_file = st.file_uploader("Choose an image...",type=["jpg","jpeg","png"])
 image=""
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Image.", use_column_width=True)
+    st.image(image, caption="Uploaded Image.", width="stretch")
 
 submit=st.button("Tell me what healthy dish can I prepare with the ingredients which are present in the image ")
 
